@@ -8,7 +8,8 @@ string number(int num)
     switch (num)
     {
 
-    case 0: return "Zero";
+    case 0:
+        return "Zero";
     case 1:
         return "one";
     case 2:
@@ -156,13 +157,15 @@ int main()
             word += "thousand  ";
     }
     if (!word.empty())
-    {  
-        if (number < 0) {
+    {
+        if (number < 0)
+        {
             word = "Negative " + word.substr(1);
-        } else {
-            word[0] = toupper(word[0]); 
         }
-
+        else
+        {
+            word[0] = toupper(word[0]);
+        }
     }
     cout << "\nConverted Number: " << word << "\n";
     return 0;
