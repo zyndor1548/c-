@@ -7,6 +7,8 @@ string number(int num)
 {
     switch (num)
     {
+
+    case 0: return "Zero";
     case 1:
         return "one";
     case 2:
@@ -78,7 +80,7 @@ string tens(int num)
     case 8:
         return "eighty";
     case 9:
-        return "ninenty";
+        return "ninety";
     default:
         return "";
     }
@@ -116,6 +118,11 @@ string getdigit(string digit)
 
 int main()
 {
+    cout << "\t#########################################\n";
+    cout << "\t#       Number to word converter        #\n";
+    cout << "\t#########################################\n";
+    cout << "\nThis program will convert any number you input into words.\n";
+    cout << "##############################################################\n\n\n";
     long long number;
     int length, cut;
     string word, numberstr;
@@ -124,7 +131,7 @@ int main()
         cout << "Enter number to change to word (number must be under 1 trillion): ";
         cin >> number;
         numberstr = to_string(number);
-    } while (numberstr.length() > 12 || number < 0);
+    } while (numberstr.length() > 12);
     length = numberstr.size();
     cut = length % 3;
     int numgroups = (cut > 0) ? (length / 3 + 1) : (length / 3);
@@ -143,20 +150,20 @@ int main()
         word += getdigit(group[i]);
         if (index == 4 && i == 0)
             word += "billion ";
-        else if (index >= 3 && i < 2)
+        if ((index == 4 && i == 1) || (index == 3 && i == 0))
             word += "million ";
-        else if (index >= 2 && i < 3)
+        if ((index == 4 && i == 2) || (index == 3 && i == 1) || (index == 2 && i == 0))
             word += "thousand  ";
     }
     if (!word.empty())
-    {
-        word[0] = toupper(word[0]);
+    {  
+        if (number < 0) {
+            word = "Negative " + word.substr(1);
+        } else {
+            word[0] = toupper(word[0]); 
+        }
+
     }
-    cout << "\t#########################################\n";
-    cout << "\t#                Welcome                #\n";
-    cout << "\t#########################################\n";
-    cout << "\nThis program will convert any number you input into words.\n";
-    cout << "\t#########################################\n";
-    cout << "Converted Number: " << word << "\n";
+    cout << "\nConverted Number: " << word << "\n";
     return 0;
 }
