@@ -7,9 +7,6 @@ string number(int num)
 {
     switch (num)
     {
-
-    case 0:
-        return "Zero";
     case 1:
         return "one";
     case 2:
@@ -94,6 +91,11 @@ string getdigit(string digit)
     for (size_t i = 0; i < digit.size(); i++)
     {
         num = digit.at(i) - '0';
+        if (num == 0)
+        {
+            continue;
+        }
+        
         pos = digit.size() - i;
         if (pos == 3)
         {
@@ -133,6 +135,12 @@ int main()
         cin >> number;
         numberstr = to_string(number);
     } while (numberstr.length() > 12);
+    if (number == 0)
+    {
+        word += "Zero";
+
+    }
+    
     length = numberstr.size();
     cut = length % 3;
     int numgroups = (cut > 0) ? (length / 3 + 1) : (length / 3);
@@ -154,7 +162,7 @@ int main()
         if ((index == 4 && i == 1) || (index == 3 && i == 0))
             word += "million ";
         if ((index == 4 && i == 2) || (index == 3 && i == 1) || (index == 2 && i == 0))
-            word += "thousand  ";
+            word += "thousand ";
     }
     if (!word.empty())
     {
