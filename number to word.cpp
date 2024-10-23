@@ -1,8 +1,11 @@
+/* This is a code to convert given numbers to words.
+   In this it is possible to convert numbers till 999 billion */
+
 #include <iostream>
 #include <string>
 #include <cctype>
 using namespace std;
-
+// Function for single digit number conversion
 string number(int num)
 {
     switch (num)
@@ -29,7 +32,7 @@ string number(int num)
         return "";
     }
 }
-
+// Function for conversion of number from 10 to 19
 string teens(int num)
 {
     switch (num)
@@ -58,7 +61,7 @@ string teens(int num)
         return "";
     }
 }
-
+// Function for conversion for two digit numbers
 string tens(int num)
 {
     switch (num)
@@ -83,7 +86,7 @@ string tens(int num)
         return "";
     }
 }
-
+// Funciton to handle conversion
 string getdigit(string digit)
 {
     int num, pos;
