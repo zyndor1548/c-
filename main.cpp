@@ -133,16 +133,18 @@ void encrypt() {
 }
 void decrypt() {
   string input, word = "";
+  char charkey; 
   int key;
   cout << "\nThis is the decryptor\n";
   cout << "\n\tEnter the sentence to decrypt: ";
   cin.ignore();
   getline(cin, input);
   cout << "\n\tKey: ";
-  cin >> key;
-  if (!isdigit(key)) {
+  cin >> charkey;
+  if (!isdigit(charkey)) {
     cout << "\n\t\tInvalid input. Key should be a number.";
   } else {
+      key = charkey - '0';
     for (char &letter : input) {
       if (isalpha(letter)) {
         char changedletter = letter - key;
